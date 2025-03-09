@@ -1,0 +1,174 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - IKUN的个人博客</title><link>https://jk5555.github.io/posts/</link><description>所有文章 | IKUN的个人博客</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>kun1.0@qq.com (改变就是好事)</managingEditor><webMaster>kun1.0@qq.com (改变就是好事)</webMaster><copyright>© 2025 [IKUN的个人博客]. 原创内容保留所有权利，遵循 [知识共享署名-非商业性使用-相同方式共享 4.0 国际协议](https://creativecommons.org/licenses/by-nc-sa/4.0/)，转载需注明作者及来源。</copyright><lastBuildDate>Sat, 08 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://jk5555.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>测试标题</title><link>https://jk5555.github.io/second_paper/</link><pubDate>Sat, 08 Mar 2025 00:00:00 +0000</pubDate><author>作者</author><guid>https://jk5555.github.io/second_paper/</guid><description><![CDATA[<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1
+1
+1
+1
+1
+1
+1
+1
+1</p>
+<p>1
+1
+1
+1
+1
+1
+1
+1
+1s
+s
+s
+s
+s
+s
+s
+s
+s
+s</p>
+<p>s
+s
+ss</p>
+<p>s
+s
+s
+s
+s
+s
+s
+s
+s
+s
+sw</p>
+<p>1
+2
+3
+4
+5
+6
+7
+8</p>
+<h1 id="用于-hugo-输出文档的设置">用于 Hugo 输出文档的设置</h1>
+<p>[outputs]</p>
+<h1></h1>
+<p>home = [&ldquo;HTML&rdquo;, &ldquo;RSS&rdquo;, &ldquo;JSON&rdquo;]
+page = [&ldquo;HTML&rdquo;] # 如果都想输出，则设置为[&ldquo;HTML&rdquo;, &ldquo;MarkDown&rdquo;]，页面底部有&quot;查看网页原文&quot;
+section = [&ldquo;HTML&rdquo;, &ldquo;RSS&rdquo;]
+taxonomy = [&ldquo;HTML&rdquo;, &ldquo;RSS&rdquo;]
+taxonomyTerm = [&ldquo;HTML&rdquo;]
+我个人是倾向不输出，所以删去了“MarkDown”字段。</p>
+<p>文章摘要
+文章摘要是用简短的一句话，对标题进行补充解释，让读者在看文章之前就对文章有个大体的印象。</p>
+<p>详细设置部分，可参考官方文档-摘要部分 。</p>
+<p>我选择的手动摘要，做以下步骤：</p>
+<p>在archetypes/default.md文本内新增description字段，以描述为摘要；
+新增摘要分隔符＂＂；（可参考本文default内容模板章节）
+比如本篇文章的摘要设置如下：</p>
+<p>1
+description: &ldquo;摘要：LoveIt主题从Github模板到个性化所需要做的重要配置&rdquo;
+这样每篇新建的文章只要填写description字段内容即可，注意，使用纯文本，不要加入代码块、字体加粗格式等富文本，容易引起渲染错误。</p>
+<p>文章封面图
+LoveIt主题让使用者选择是否设置文章预览图，如果想设置，在markdown文档的最开头的配置部分，填写featuredImage字段，引用的图片可以是网络URL地址的图片，也可以是本博客本地图片。</p>
+<p>我选择的是本地图片的static方式加载(还有asset方式)，资源相对路径的起始位置是根目录下的static目录，比如本文的图片目录是static/img/Chore-Pic/LoveIt-Theme.webp，那么这个字段应该填写：</p>
+<p>1
+featuredImage: &ldquo;/img/Chore-Pic/LoveIt-Theme.webp&rdquo;
+🤔图片的分辨率建议是1000x300或者长宽比相近的分辨率，可以避免预览被裁剪。</p>
+<p>图片格式尽量选择webp格式(或使用ffmpeg等工具将其他图片格式转换为webp)。</p>
+<p>webp格式的图是新一代的压缩格式，保证最大原图清晰度的情况下，尽可能地缩小了图片内存占用，加快加载速度。</p>
+<p>Algolia站内搜索
+Algolia是法国的初创公司，类似于存储云服务，计算云服务，提供的是搜索云服务，用户建立应用，接着通过sdk推送数据，然后通过sdk就可以搜索了。个人用户是免费使用，还有个最大的优点是速度快，比LoveIt主题支持的默认站内搜索工具lunar.js快了一个数量级。</p>
+<p>按照以下步骤实施即可：</p>
+<p>在Algolia官网注册账号后登录，或使用 GitHub、Google 帐号登录；</p>
+<p>点击左侧边栏的OverView/dashboard，可以看到自动创建了一个App，可以重新命名，我们新建一个Index，比如命名为My_Blog，点击进去，准备上传index.json作为搜索元数据。</p>
+<p>Algolia 为我们提供了三种方式来增加记录：手动添加、上传 json 文件、API自动添加。下面演示自动添加的方式：</p>
+<p>生成index.json并上传：</p>
+<p>每次更新博客内容并发布时，需要更新index.json，可以做到自动化脚本化，借助第三方工具Atomic-Algolia即可。安装方法：</p>
+<p>安装node.js后，可以执行npm指令；</p>
+<p>执行 npm install atomic-algolia，可以安装 atomic-algolia；</p>
+<p>在hugo根目录修改或新建文件 package.json ，添加如下内容：</p>
+<p>1
+2
+3
+4
+5
+6
+{
+&ldquo;scripts&rdquo;: {
+&ldquo;test&rdquo;: &ldquo;echo &quot;Error: no test specified&quot; &amp;&amp; exit 1&rdquo;,
+&ldquo;algolia&rdquo;: &ldquo;atomic-algolia&rdquo;
+}
+}
+根目录下新建.env文件,添加如下内容：</p>
+<p>1
+2
+3
+4
+ALGOLIA_APP_ID=你的Application ID
+ALGOLIA_INDEX_NAME=你的algolia-index名字
+ALGOLIA_INDEX_FILE=public/index.json
+ALGOLIA_ADMIN_KEY=你的Admin API Key
+上述的关键信息 Application ID 和 Admin API Key可以在algolia的DashBoard页面获取，“API Keys”按钮，点进去后，就能看到，前者是大概10位长度的大写英文与数字，后者大概30位的小写英文与数字。</p>
+<p>Index的名字是自己重命名的，index-file的路径指的是你的发布路径和Hugo根目录的相对位置，上述示例是public为发布目录。</p>
+<p>⚠️ ALGOLIA_ADMIN_KEY可以用来管理你的索引，所以最好不要提交到公共仓库。</p>
+<p>我的做法是Hugo博客内容为Private仓库，发布的仓库kissingfire123.github.io为public，添加为Private仓库的submodule，一来隔离了隐私数据，二来避免每次更新草稿内容都触发page-deploy。</p>
+<p>配置config.toml</p>
+<p>找到 [params.search]模块，至少配置以下几个值(以下略去其他内容)：</p>
+<p>1
+2
+3
+4
+5
+6
+7
+8
+[params.search]
+enable = true</p>
+<h1 id="搜索引擎的类型-lunr-algolia">搜索引擎的类型 (&ldquo;lunr&rdquo;, &ldquo;algolia&rdquo;)</h1>
+<p>type = &ldquo;algolia&rdquo;
+[params.search.algolia]
+index = &ldquo;Benjamin-Blog&rdquo; # index-name,这个的确是我的，个人自行命名
+appID = &ldquo;B45S568G91&rdquo; # app-id，内容我随意写的
+searchKey = &ldquo;c00000d11111e22222f444e2333&rdquo;#admin-key，内容此处为演示，随意写的
+更新索引并自动上传：npm run algolia</p>
+<p>输出类似如下内容，“Benjamin-Blog&quot;是我的index-name。</p>
+<p>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+$ npm  run algolia</p>
+<blockquote>
+<p>algolia
+atomic-algolia</p></blockquote>
+<p>[Algolia] Adding 0 hits to Benjamin-Blog
+[Algolia] Updating 0 hits to Benjamin-Blog
+[Algolia] Removing 0 hits from Benjamin-Blog
+[Algolia] 219 hits unchanged in Benjamin-Blog
+{}
+至此，algolia功能启用成功，使用示范如下：</p>
+<p>评论系统Valine
+LoveIt主题支持多种评论系统，例如Disqus，GitTalk，valine，前2者都需要用户登录后评论且数据托管更方便，valine不需要登录且无后端。</p>
+<p>关于valine更详细的介绍，有兴趣的朋友可以看看valine中文文档。</p>
+<p>下面只说如何在LoveIt主题上用起来这个评论系统：</p>
+<p>valine基于LeanCloud登录，注册并登录；</p>
+<p>选择国际版，不要选择华北或华东，后面这2个要上传身份证备案的，比较麻烦。(Ps：第一次我就不清楚情况，弄的华北版，各种麻烦，实名认证)</p>
+<p>新建应用，比如我的是 Benjamin-Personal-Blog ,然后获取2个关键信息：AppID 和 AppKey。</p>
+<p>这2个关键信息在侧边栏设置==&gt;</p>
+<p>sd
+s
+s</p>
+<p>1
+1
+1
+1
+1
+1
+1
+1</p>]]></description></item></channel></rss>
