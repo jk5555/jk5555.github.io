@@ -46,10 +46,14 @@ git init
 # 将LoveIt作为仓库子模块clone
 git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
 ```
-如果不想LoveIt随版本更新，也可以下载主题的 [发布版本:(fa-regular fa-file-zipper):.zip](https://github.com/dillonzq/LoveIt/releases) 文件 并且解压放到 themes 目录.
+**如果不想 LoveIt 随版本更新，也可以下载主题的 [发布版本:(fa-regular fa-file-zipper):.zip](https://github.com/dillonzq/LoveIt/releases) 文件 并且解压放到 themes 目录.**
+
+
 ### 配置文件初始化
-把主题目录下的`themes/LoveIt/archetypes/default.md`文件复制替换到项目文件夹下的`archetypes/`下面，这个文件是日后创建文章时要用到的模版；
-把主题目录下的`themes/LoveIt/exampleSite/hugo.toml`文件复制替换掉项目文件夹下的`hugo.toml`配置文件，这个文件是网站的整体设置，里面的一些配置项后面会说到。
+* 把主题目录下的`themes/LoveIt/archetypes/default.md`文件复制替换到项目文件夹下的`archetypes/`下面，这个文件是日后创建文章时要用到的模版；
+* 把主题目录下的`themes/LoveIt/exampleSite/hugo.toml`文件复制替换掉项目文件夹下的`hugo.toml`配置文件，这个文件是网站的整体设置，里面的一些配置项后面会说到。
+
+
 ## 创建GitHub Pages仓库
 接下来需要在GitHub上创建GitHub Pages仓库，这个是用来承接构建好的静态网站文件的，并且可以通过域名访问。![repo.png](/images/build_blog_by_hugo_01.png)
 如图所示，只需要创建一个仓库，命名格式为`username.github.io`，这个`username`是Github账户名称，我这里已经创建了一个，所以不能重复创建了，我的GitHub账户名称为`jk5555`，
@@ -57,7 +61,7 @@ git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
 
 ## 配置GitHub Action流水线
 ### 添加GitHub Action配置文件
-在项目根文件夹下创建`.github/workflows/gh-pages.yml`配置文件，内容如下
+在项目根文件夹下创建`.github/workflows/gh-pages.yml`配置文件，内容如下：
 ```yml
 name: GitHub Pages
 
@@ -102,14 +106,16 @@ jobs:
 ```
 
 ### 创建ACTION_TOKEN密钥
-GitHub Action流水线在执行推送任务时需要得到仓库的访问授权，这个token在账户设置的[Personal access tokens](https://github.com/settings/tokens)这里配置
+GitHub Action流水线在执行推送任务时需要得到仓库的访问授权，这个token在账户设置的 [**Personal access tokens**](https://github.com/settings/tokens) 这里配置
 ![token.png](/images/build_blog_by_hugo_02.png) 记得一定要勾选`repo`和`workflow`权限，token的命名定为 **ACTION_TOKEN**，这样上面添加的配置文件就能生效了。
-后面只需要push这个仓库的文件，就能实现线上自动构建发布，速度很快。
+后面只需要push博客项目仓库的文件，就能实现线上自动构建发布，速度很快。
+
 
 ## 本地调试或线上预览
 ### hugo.toml配置文件说明
-这个其实配置文件里面已经有很详细的说明了，还可以看看官方的配置文档[配置说明](https://hugoloveit.com/zh-cn/theme-documentation-basics/#3-%E9%85%8D%E7%BD%AE)
-我这里提一下部分参数
+这个其实配置文件里面已经有很详细的说明了，还可以看看官方的配置文档 [配置说明](https://hugoloveit.com/zh-cn/theme-documentation-basics/#3-%E9%85%8D%E7%BD%AE) 。
+
+我这里提一下部分参数：
 ```toml
 baseURL = "https://jk5555.github.io" # 这个填写网站地址
 
@@ -123,6 +129,7 @@ dateFormat = "2006-01-02" # 这个就固定填2006-01-02，别改，改了时间
 
 ### default.md文件说明
 前面说的复制的`default.md`这个文件是文章的配置模版，通过此模版创建文章时能继承一些预设置，比较方便；
+
 复制过来的模版大部分都不用动，值得注意的是：
 * 文章的摘要部分可以通过`description`参数配置，但是有一个`<!--more-->`分隔符，在这个分隔符之前的文本会被定义为文章摘要，他的优先级比`description`高。
 * `featuredImage`和`featuredImagePreview`两个参数是用来设置文章封面图的，`featuredImage`参数展示在文章头部，`featuredImagePreview`展示在文章外部；建议图片分辨率在**1000x300**左右，不然可能会被自动截取。
@@ -133,7 +140,49 @@ dateFormat = "2006-01-02" # 这个就固定填2006-01-02，别改，改了时间
 文章的存放目录为项目根文件夹下的`content/posts`，实际上`content`目录就是用来存放文章的，下面的一级目录名称与菜单配置名称对应，这个在项目配置文件里面配置。
 之后只需要往这里添加md格式的文章即可。
 
+### 本地启动
+#### 基于文章模板来创建文章
+```shell
+hugo new posts/first_post.md
+```
+
+#### 图标库
+LoveIt 主题使用 [Font Awesome](https://fontawesome.com/) 作为图标库. 我们可以在文章中轻松使用这些图标.
+
+从 Font Awesome 网站 上获取所需的图标 class.
+```markdown
+去露营啦! ：(fas fa-campground fa-fw)： 很快就回来. 
+真开心! ：(far fa-grin-tears)：
+```
+
+呈现的输出效果如下:
+
+> 去露营啦! :(fas fa-campground fa-fw): 很快就回来.
+> 
+> 真开心!:(far fa-grin-tears):
+
+#### 本地启动
+```shell
+hugo serve
+```
+去查看 [http://localhost:1313](http://localhost:1313) 
+
+修改文章时，页面会自动实时刷新。
+
+### 线上预览
+当本地修改好了之后，就可以git push 到远程仓库了，记得修改文章设置参数`draft`，置为`false`。
+
+推送完毕后，Github Action 会自动构建并发布，大约等个几秒钟就可以在线上看到了！
+
 ## 其他辅助性工具或文档
+* loveit 主题 相关语法，配置帮助文档查看：[主题文档 - 内容](https://hugoloveit.com/zh-cn/theme-documentation-content/)
+
+* md基础语法：[Markdown 基本语法](https://hugoloveit.com/zh-cn/basic-markdown-syntax/)
+
+* LoveIt内置支持的icon图标网站：[Font Awesome](https://fontawesome.com/)
+
+## TODO事项
+至此一个博客网站基本搭建完成，但是还有一些事情需要去做。比如：站内搜索，评论系统，SEO，站点信息统计 等等。这些优先级可以缓缓，先把内容做好，差不多了时候再去接入。
 
 
 
