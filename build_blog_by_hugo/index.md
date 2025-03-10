@@ -53,6 +53,13 @@ git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
 * 把主题目录下的`themes/LoveIt/archetypes/default.md`文件复制替换到项目文件夹下的`archetypes/`下面，这个文件是日后创建文章时要用到的模版；
 * 把主题目录下的`themes/LoveIt/exampleSite/hugo.toml`文件复制替换掉项目文件夹下的`hugo.toml`配置文件，这个文件是网站的整体设置，里面的一些配置项后面会说到。
 
+### 本地仓库关联Github远程仓库
+在 GitHub 上创建新仓库，仓库名尽量和此项目名保持一致
+```shell
+# 关联远程仓库
+git remote add origin https://github.com/jk5555/kunblog.git # 改为具体的仓库clone地址
+git push -u origin master
+```
 
 ## 创建GitHub Pages仓库
 接下来需要在GitHub上创建GitHub Pages仓库，这个是用来承接构建好的静态网站文件的，并且可以通过域名访问。![repo.png](/images/build_blog_by_hugo_01.png)
