@@ -114,7 +114,7 @@ jobs:
 
 ### 创建ACTION_TOKEN密钥
 GitHub Action流水线在执行推送任务时需要得到仓库的访问授权，这个token在账户设置的 [**Personal access tokens**](https://github.com/settings/tokens) 这里配置
-![token.png](/images/build_blog_by_hugo_02.png) 记得一定要勾选`repo`和`workflow`权限，token的命名定为 **ACTION_TOKEN**，这样上面添加的配置文件就能生效了。
+![token.png](/images/build_blog_by_hugo_02.png) 记得一定要勾选`repo`和`workflow`权限，创建成功之后复制好token，打开GitHub Action流水线所在项目的环境变量设置添加仓库变量：进入仓库的 `Settings > Secrets > Actions`，token的命名定为 **ACTION_TOKEN**，这样上面添加的配置文件就能生效了。
 后面只需要push博客项目仓库的文件，就能实现线上自动构建发布，速度很快。
 
 
