@@ -33,8 +33,8 @@
         }
 
         .avatar {
-            width: 180px;
-            height: 180px;
+            width: 20%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--primary-color);
