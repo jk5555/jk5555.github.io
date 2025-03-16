@@ -8,8 +8,8 @@
     <style>
         /* 继承主题变量 */
         :root {
-            --primary-color: #2f4f4f;
-            --secondary-color: #3c7551;
+            --primary-color: #3498db;
+            --secondary-color: #3498db;
             --text-color: #34495e;
             --card-bg: #ffffff;
             --shadow-color: rgba(0, 0, 0, 0.1);
@@ -234,7 +234,7 @@
 <div class="about-container">
     <!-- 个人信息头 -->
     <section class="profile-header">
-        <img src="/images/avatar.jpg" alt="Avatar" class="avatar">
+        <img src="/images/avatar.png" alt="Avatar" class="avatar">
         <div>
             <h1> 改变就是好事（笔名）</h1>
             <p>🚀 （伪）全栈开发者 | 📝 分享博主 | 🎓 持续学习者</p>
@@ -276,7 +276,7 @@
         </ul>
         期待通过持续输出构建三维知识网络，既作自我精进的里程碑，也为后来者点亮一盏避坑明灯💡。</p>
         <div class="skill-bar">
-            <div class="skill-progress" data-width="85%">Java</div>
+            <div class="skill-progress" data-width="85%"></div>
         </div>
     </section>
 
@@ -298,10 +298,10 @@
         <div class="timeline-item">
             <h3>2021 - 插件开发</h3>
             <p>尝试开发IDEA插件，写了几个有助于工作的IDEA插件
-            <ul>
-                <li> <a href="https://plugins.jetbrains.com/plugin/17247-mybatis-log-convert" target="_blank"><i class="fa-solid fa-link"></i> Mybatis Log Convert</a></li>
-                <li> <a href="https://plugins.jetbrains.com/plugin/16668-formatjsonforentity" target="_blank"><i class="fa-solid fa-link"></i> FormatJSONForEntity</a></li>
-            </ul>
+                <ul>
+                    <li> <a href="https://plugins.jetbrains.com/plugin/17247-mybatis-log-convert" target="_blank"><i class="fa-solid fa-link"></i> Mybatis Log Convert</a></li>
+                    <li> <a href="https://plugins.jetbrains.com/plugin/16668-formatjsonforentity" target="_blank"><i class="fa-solid fa-link"></i> FormatJSONForEntity</a></li>
+                </ul>
             </p>
         </div>
         <div class="timeline-item">
