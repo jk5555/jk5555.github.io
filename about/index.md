@@ -330,14 +330,14 @@
                 <img src="https://www.ainavpro.com/wp-content/uploads/2023/03/logo-8-e1677916867522.png" alt="AI 导航" class="tech-icon">
                 <p class="tech-name">AI 导航</p>
             </a>
-<!--            <a href="https://aws.amazon.com" target="_blank" class="tech-card" data-tooltip="">-->
-<!--                <img src="/images/tech/aws.svg" alt="AWS" class="tech-icon">-->
-<!--                <p class="tech-name">AWS</p>-->
-<!--            </a>-->
-<!--            <a href="https://www.typescriptlang.org" target="_blank" class="tech-card" data-tooltip="">-->
-<!--                <img src="/images/tech/typescript.svg" alt="TypeScript" class="tech-icon">-->
-<!--                <p class="tech-name">TypeScript</p>-->
-<!--            </a>-->
+            <a href="https://github.com/GitHubDaily/GitHubDaily" target="_blank" class="tech-card" data-tooltip="坚持分享 GitHub 上高质量、有趣实用的开源技术教程、开发者工具、编程网站、技术资讯。A list cool, interesting projects of GitHub.">
+                <img src="/images/github.png" alt="GitHubDaily" class="tech-icon">
+                <p class="tech-name">GitHubDaily</p>
+            </a>
+            <a href="https://programmercarl.com" target="_blank" class="tech-card" data-tooltip="《代码随想录》，学习算法不迷路">
+                <img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20210614201246512.png" alt="代码随想录" class="tech-icon">
+                <p class="tech-name">代码随想录</p>
+            </a>
         </div>
     </section>
 </div>
