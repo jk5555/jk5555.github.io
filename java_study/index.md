@@ -204,13 +204,13 @@ public class Kun{
 
 - 判断指令: ng-if : 
 
-- 增强下拉列表指令:  select2 , <input select2 select2-model="" config="" mudlble="" />
+- 增强下拉列表指令:  `select2 , <input select2 select2-model="" config="" mudlble="" />`
 
   其中: select2指的是: 指令,声明这是个下拉框;
 
   ​	  select2-model指的是:选择的数据存贮 数据格式:{"id":1,"text":"xxx"}
 
-  ​	  config指的是:数据来源,读取的数据格式为: {data:[{"id":1,"text":"xxx"},{"id":1,"text":"xxx"}]}
+  ​	  config指的是:数据来源,读取的数据格式为:` {data:[{"id":1,"text":"xxx"},{"id":1,"text":"xxx"}]}`
 
   ​	  mudible指的是 是否为多选,true为多选,false为单选
 
