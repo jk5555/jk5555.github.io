@@ -1,4 +1,4 @@
-# 《编码隐匿在计算机背后的语言》-[美] Charles Petzold 读后感
+# 《编码隐匿在计算机软硬件背后的语言》-[美] Charles Petzold 读后感
 
 
 <!--more-->

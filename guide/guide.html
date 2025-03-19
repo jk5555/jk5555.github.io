@@ -11,18 +11,19 @@
             --secondary-bg: #f8f9fa;
             --text-primary: #202124;
             --text-secondary: #5f6368;
-            --accent-color: #1a73e8;
-            --card-shadow: 0 1px 6px rgba(32,33,36,0.28);
-            --transition-duration: 0.3s;
+            --accent-color: #3498db;
+            --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --transition-duration: 0.25s;
+            --bg-opacity: 0.15;
         }
 
         [data-theme="dark"] {
             --primary-bg: #202124;
-            --secondary-bg: #303134;
+            --secondary-bg: #2d2f33;
             --text-primary: #e8eaed;
             --text-secondary: #9aa0a6;
             --accent-color: #8ab4f8;
-            --card-shadow: 0 1px 6px rgba(0,0,0,0.38);
+            --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
         * {
@@ -37,7 +38,7 @@
             background-color: var(--primary-bg);
             color: var(--text-primary);
             min-height: 100vh;
-            position: relative;
+            padding-bottom: 50px;
         }
 
         body::after {
@@ -50,8 +51,8 @@
             background-image: var(--custom-bg, none);
             background-size: cover;
             background-position: center;
-            opacity: 0.15;
             z-index: -1;
+            opacity: var(--bg-opacity);
         }
 
         .control-bar {
@@ -106,16 +107,70 @@
             width: 250px;
         }
 
+        /* 新增样式 */
+        .bg-control-group {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bg-apply {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+
+        #opacityRange {
+            width: 100%;
+            height: 4px;
+            accent-color: var(--accent-color);
+        }
+
+        #opacityValue {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+
+
+        /* 新增搜索框相关样式 */
         .search-section {
-            padding: 120px 20px 40px;
-            max-width: 800px;
+            padding: 100px 20px 40px;
+            max-width: 760px;
             margin: 0 auto;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
         }
 
         .engine-selector {
             position: relative;
-            display: inline-block;
-            margin-bottom: 15px;
+            flex-shrink: 0;
+            border-right: 1px solid var(--text-secondary);
+            height: 44px;
+        }
+
+        .engine-selector::after {
+            content: "\f078";
+            font-family: "Font Awesome 5 Free",serif;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: var(--text-secondary);
+            pointer-events: none;
         }
 
         .engine-selector select {
@@ -129,46 +184,92 @@
             cursor: pointer;
         }
 
+        #engineSelect {
+            height: 100%;
+            padding: 0 40px 0 20px;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 14px;
+            appearance: none;
+            cursor: pointer;
+            border-radius: 24px 0 0 24px;
+        }
+
+        #engineSelect option {
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            padding: 8px 12px;
+        }
+
+        #engineSelect:hover {
+            background: rgba(0,0,0,0.05);
+        }
+
         .search-box {
+            flex: 1;
             position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .search-input {
             width: 100%;
-            padding: 14px 24px;
-            font-size: 16px;
+            height: 44px;
+            padding: 0 20px 0 16px;
             border: none;
-            border-radius: 24px;
-            background: var(--secondary-bg);
+            background: transparent;
             color: var(--text-primary);
-            box-shadow: var(--card-shadow);
+            font-size: 16px;
+            border-radius: 0 24px 24px 0;
         }
 
+        /* 交互优化 */
+        .search-container:focus-within {
+            box-shadow: 0 2px 8px var(--accent-color);
+        }
+
+        #engineSelect:focus {
+            outline: none;
+            box-shadow: inset 0 0 0 2px var(--accent-color);
+        }
+
+
+
+
         .nav-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 30px 5%;
             max-width: 1600px;
             margin: 0 auto;
+            padding: 20px 5%;
         }
 
         .category-section {
-            background: var(--secondary-bg);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: var(--card-shadow);
+            margin-bottom: 35px;
         }
 
         .category-title {
-            font-size: 1.2em;
-            margin-bottom: 15px;
+            font-size: 1.3em;
+            margin: 0 0 15px 0;
+            padding: 8px 15px;
+            /*background: var(--secondary-bg);*/
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-title i {
             color: var(--accent-color);
+            font-size: 0.9em;
+        }
+
+        .cards-flow {
+            padding-top: 0.5em; /* 创建绘制缓冲区 */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-left: 15px;
+            overflow-x: auto;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent-color);
+            scrollbar-width: thin;
         }
 
         .nav-container {
@@ -211,49 +312,48 @@
         }
 
         .card {
-            background: var(--primary-bg);
-            border-radius: 12px;
-            padding: 18px;
+            flex: 0 0 calc(20% - 12px); /* 5列布局 */
+            min-width: 160px;
+            /*background: var(--primary-bg);*/
+            border-radius: 8px;
+            padding: 12px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 15px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--text-secondary);
-            opacity: 0.8;
+            transition: all var(--transition-duration);
+            box-shadow: var(--card-shadow);
+            border: 1px solid transparent;
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            opacity: 1;
+            transform: translateY(-2px);
             border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .card-logo {
-            width: 36px;
-            height: 36px;
+            width: 28px;
+            height: 28px;
             object-fit: contain;
-            border-radius: 8px;
-            background: var(--secondary-bg);
-            padding: 4px;
+            border-radius: 6px;
+            flex-shrink: 0;
         }
 
         .card-content {
-            flex: 1;
-            min-width: 0;
+            margin-left: 12px;
+            overflow: hidden;
         }
 
         .card-title {
             font-weight: 500;
-            margin-bottom: 4px;
+            font-size: 0.95em;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .card-desc {
-            font-size: 0.9em;
+            font-size: 0.82em;
             color: var(--text-secondary);
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -271,66 +371,455 @@
         <i class="fas fa-image"></i>
     </button>
     <div class="bg-config">
-        <label>
-            <input type="url" class="bg-input" placeholder="输入背景图URL"
-                   onchange="updateBackground(this.value)">
-        </label>
+        <div class="bg-control-group">
+            <label for="bgUrlInput"></label><input type="url" class="bg-input" placeholder="背景图URL"
+                                                   id="bgUrlInput">
+            <button class="bg-apply" onclick="bgManager.apply()">应用</button>
+        </div>
+        <div class="bg-control-group">
+            <label>透明度：<span id="opacityValue">50</span>%</label>
+            <label for="opacityRange"></label><input type="range" id="opacityRange" min="0" max="100" value="50"
+                                                     oninput="bgManager.updateOpacity(this.value)">
+        </div>
     </div>
 </div>
 
 <section class="search-section">
-    <div class="engine-selector">
-        <select id="engineSelect">
-            <option value="https://www.google.com/search?q=">Google</option>
-            <option value="https://www.bing.com/search?q=">Bing</option>
-            <option value="https://chat.openai.com/">ChatGPT</option>
-            <option value="https://claude.ai/">Claude</option>
-        </select>
-    </div>
-    <div class="search-box">
-        <label>
-            <input type="text" class="search-input" placeholder="搜索或输入网址"
-                   onkeypress="handleSearch(event)">
-        </label>
+    <div class="search-container">
+        <div class="engine-selector">
+            <label for="engineSelect"></label><select id="engineSelect">
+                <option value="https://www.google.com/search?q=">Google</option>
+                <option value="https://www.bing.com/search?q=">Bing</option>
+                <option value="https://chat.openai.com/">ChatGPT</option>
+                <option value="https://claude.ai/">Claude</option>
+            </select>
+        </div>
+        <div class="search-box">
+            <label>
+                <input type="text" class="search-input" placeholder="输入搜索内容"
+                       onkeypress="handleSearch(event)">
+            </label>
+        </div>
     </div>
 </section>
 
 <main class="nav-container">
+    <!-- 常用网站 -->
     <section class="category-section">
-        <h2 class="category-title">AI 板块</h2>
-        <div class="card-grid">
-            <div class="card" onclick="window.open('https://chat.openai.com')">
-                <img src="https://logo.clearbit.com/openai.com"
-                     class="card-logo"
-                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjMDA3YmZhIj48cGF0aCBkPSJNNC4yNjQgMThTMzYgMTguMzM2LTMuNTM2LTMuNTM2QzEuNDkgMTIuODU2IDEuMjI0IDExLjEzIDEuMDMzIDkuNDE4Qy42MjQgNi4wNCAyLjY2NiAzLjEgNS41NSAyLjI0MmMxLjE3LS40NCAyLjM4Mi0uMzcgMy41NS4wOCAxLjA2LjM3IDIuMS45NCAyLjk1IDEuNzkuODQtLjg1IDEuOS0xLjQyIDIuOTUtMS43OSAxLjE3LS40NSAyLjM4LS41MiAzLjU1LS4wOCAyLjg4Mi44NiA0LjkyNCAzLjc5OCA0LjUxNyA3LjE2LS4xOSAxLjcxLS40NTcgMy40MzctMS42OTcgNS4xNjZsLTMuNTM2IDMuNTM2QzEzLjggMjEuNDkgMTIuMDggMjEuNzc2IDEwLjM3IDIxLjk2N2MtMS43OS40NDMtMy40NS4yNi00LjkyLS4zNjdhNS4yNiA1LjI2IDAgMCAxLTEuMTg2LS42em0xNS4wODUgMi43MDVsMi44MjctMi44MjdjLS42Mi0uNjItMS4xMy0xLjMyLTEuNTUtMi4wNy40Mi43NS45MyAxLjQ1IDEuNTUgMi4wN2wyLjgyNyAyLjgyNy0xLjQxNCAxLjQxNC0yLjgyNy0yLjgyOGMtLjYyLjYyLTEuMzIgMS4xMy0yLjA3IDEuNTUuNzUtLjQyIDEuNDUtLjkzIDIuMDctMS41NWwyLjgyOCAyLjgyNyAxLjQxNC0xLjQxNHpNIi8+PC9zdmc+'">
+        <h2 class="category-title"><i class="fas fa-star"></i>常用网站</h2>
+        <div class="cards-flow">
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
                 <div class="card-content">
-                    <div class="card-title">ChatGPT</div>
-                    <div class="card-desc">OpenAI的对话式AI助手，提供智能问答和创作支持</div>
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
                 </div>
             </div>
-            <!-- 更多卡片示例... -->
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Googleafdsasdasdsasddsadssadsaddadsasdadaddsaadsadssadasdasa</div>
+                    <div class="card-desc">全球搜索引擎555555555555555555afsdasda aadada adsasdadasdasddaadsadsdasadsdaasdasdds55555555555555555555555555555555555555555555</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <div class="card" onclick="window.open('#')">
+                <img src="https://www.google.com/favicon.ico" class="card-logo">
+                <div class="card-content">
+                    <div class="card-title">Google</div>
+                    <div class="card-desc">全球搜索引擎</div>
+                </div>
+            </div>
+            <!-- 添加更多卡片 -->
         </div>
     </section>
 
-    <!-- 其他分类区块示例 -->
+    <!-- AI板块 -->
     <section class="category-section">
-        <h2 class="category-title">开发教程</h2>
-        <div class="card-grid">
-            <div class="card" onclick="window.open('https://example.com')">
-                <div class="card-logo" style="background: #f0db4f; color: #323330;">
-                    <i class="fab fa-js"></i>
-                </div>
+        <h2 class="category-title"><i class="fas fa-robot"></i>AI 工具</h2>
+        <div class="cards-flow">
+            <div class="card" onclick="window.open('https://chat.openai.com')">
+                <img src="https://chat.openai.com/favicon.ico" class="card-logo">
                 <div class="card-content">
-                    <div class="card-title">JavaScript 教程</div>
-                    <div class="card-desc">现代JavaScript编程从入门到精通</div>
+                    <div class="card-title">ChatGPT</div>
+                    <div class="card-desc">OpenAI对话式AI</div>
                 </div>
             </div>
-            <!-- 更多卡片... -->
+            <!-- 添加更多AI卡片 -->
+        </div>
+    </section>
+
+    <!-- 资源网站 -->
+    <section class="category-section">
+        <h2 class="category-title"><i class="fas fa-database"></i>资源网站</h2>
+        <div class="cards-flow">
+            <!-- 示例卡片 -->
         </div>
     </section>
 </main>
 
 <script>
+
+    class BackgroundManager {
+        constructor() {
+            this.bgConfig = {
+                url: localStorage.getItem('backgroundUrl') || '',
+                opacity: localStorage.getItem('backgroundOpacity') || 50
+            };
+
+            // 初始化事件监听
+            document.addEventListener('click', this.handleOutsideClick.bind(this));
+            this.initControls();
+        }
+
+        initControls() {
+            // 初始化输入框状态
+            document.getElementById('bgUrlInput').value = this.bgConfig.url;
+            document.getElementById('opacityRange').value = this.bgConfig.opacity;
+            document.getElementById('opacityValue').textContent = this.bgConfig.opacity;
+
+            // 应用初始设置
+            this.updateBackground(this.bgConfig.url);
+            this.updateOpacity(this.bgConfig.opacity);
+        }
+
+        handleOutsideClick(e) {
+            const bgConfig = document.querySelector('.bg-config');
+            const trigger = document.querySelector('.bg-config-trigger');
+
+            if (!bgConfig.contains(e.target) && !trigger.contains(e.target)) {
+                bgConfig.classList.remove('active');
+            }
+        }
+
+        updateBackground(url) {
+            this.bgConfig.url = url;
+            localStorage.setItem('backgroundUrl', url);
+            document.body.style.setProperty('--custom-bg', url ? `url(${url})` : 'none');
+        }
+
+        updateOpacity(value) {
+            this.bgConfig.opacity = value;
+            localStorage.setItem('backgroundOpacity', value);
+            document.body.style.setProperty('--bg-opacity', value / 100);
+            document.getElementById('opacityValue').textContent = value;
+        }
+
+        apply() {
+            const url = document.getElementById('bgUrlInput').value;
+            this.updateBackground(url);
+            document.querySelector('.bg-config').classList.remove('active');
+        }
+    }
+
+    // 初始化背景管理器
+    const bgManager = new BackgroundManager();
+
+    // 在:root中添加透明度变量
+    document.documentElement.style.setProperty('--bg-opacity', localStorage.getItem('backgroundOpacity') / 100 || 0.15);
+
+
+    function toggleBgConfig() {
+        const config = document.querySelector('.bg-config');
+        config.classList.toggle('active');
+        if (config.classList.contains('active')) {
+            document.getElementById('bgUrlInput').focus();
+        }
+    }
+
     class ThemeManager {
         constructor() {
             this.theme = localStorage.getItem('theme') || 'light';
@@ -350,30 +839,10 @@
         }
     }
 
-    class BackgroundManager {
-        constructor() {
-            this.bgUrl = localStorage.getItem('backgroundUrl') || '';
-            if (this.bgUrl) {
-                document.body.style.setProperty('--custom-bg', `url(${this.bgUrl})`);
-            }
-        }
-
-        update(url) {
-            this.bgUrl = url;
-            localStorage.setItem('backgroundUrl', url);
-            document.body.style.setProperty('--custom-bg', `url(${url})`);
-        }
-    }
-
     const themeManager = new ThemeManager();
-    const bgManager = new BackgroundManager();
 
     function toggleTheme() {
         themeManager.toggle();
-    }
-
-    function toggleBgConfig() {
-        document.querySelector('.bg-config').classList.toggle('active');
     }
 
     function updateBackground(url) {
@@ -387,6 +856,29 @@
             window.open(`${engine}${query}`, '_blank');
         }
     }
+
+    // 新增搜索引擎选择交互
+    const engineSelect = document.getElementById('engineSelect');
+
+    // 动态调整选择框宽度
+    function adjustSelectWidth() {
+        const tempSelect = document.createElement('select');
+        tempSelect.style.position = 'absolute';
+        tempSelect.style.visibility = 'hidden';
+        tempSelect.innerHTML = engineSelect.innerHTML;
+        document.body.appendChild(tempSelect);
+
+        const selectedIndex = engineSelect.selectedIndex;
+        tempSelect.selectedIndex = selectedIndex;
+        const width = tempSelect.options[selectedIndex].textContent.length * 10 + 60;
+        engineSelect.style.width = `${width}px`;
+
+        document.body.removeChild(tempSelect);
+    }
+
+    engineSelect.addEventListener('change', adjustSelectWidth);
+    window.addEventListener('resize', adjustSelectWidth);
+    adjustSelectWidth(); // 初始化
 
     // 初始化示例卡片数据
     window.addEventListener('DOMContentLoaded', () => {
