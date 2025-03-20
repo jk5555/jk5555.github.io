@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Navigation - Ultimate Productivity Portal</title>
+    <title>我的专属导航</title>
+    <link rel="icon" href="/favicon/favicon.svg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -15,6 +16,7 @@
             --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             --transition-duration: 0.25s;
             --bg-opacity: 0.15;
+            --primary-bg-rgb: 255, 255, 255;
         }
 
         [data-theme="dark"] {
@@ -24,6 +26,7 @@
             --text-secondary: #9aa0a6;
             --accent-color: #8ab4f8;
             --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --primary-bg-rgb: 32, 33, 36;
         }
 
         * {
@@ -51,8 +54,9 @@
             background-image: var(--custom-bg, none);
             background-size: cover;
             background-position: center;
+            opacity: var(--bg-opacity, 0.15);
             z-index: -1;
-            opacity: var(--bg-opacity);
+            pointer-events: none;
         }
 
         .control-bar {
@@ -231,25 +235,30 @@
             box-shadow: inset 0 0 0 2px var(--accent-color);
         }
 
-        /* 新增Tab栏样式 */
         .tab-container {
             position: sticky;
             top: 140px;
             z-index: 900;
-            background: var(--primary-bg);
+            background: transparent;
             padding: 0 5%;
             margin: 0 auto;
             max-width: 1600px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
         }
 
         .nav-tabs {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            scrollbar-width: thin;
-            padding: 12px 0;
-        }
+             display: flex;
+             gap: 8px;
+             overflow-x: auto;
+             scrollbar-width: thin;
+             padding: 12px 20px;
+             background: rgba(var(--primary-bg-rgb), 0.2);
+             backdrop-filter: blur(8px);
+             border-radius: 24px;
+             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+             max-width: 90%;
+         }
 
         .nav-tab {
             flex: 0 0 auto;
@@ -307,25 +316,8 @@
         }
 
 
-        .nav-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 20px 5%;
-        }
-
         .category-section {
             margin-bottom: 35px;
-        }
-
-        .category-title {
-            font-size: 1.3em;
-            margin: 0 0 15px 0;
-            padding: 8px 15px;
-            /*background: var(--secondary-bg);*/
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .category-title i {
@@ -344,44 +336,11 @@
             scrollbar-width: thin;
         }
 
-        .nav-container {
-            display: grid;
-            gap: 30px;
-            padding: 30px 5%;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
 
         .category-section {
             margin-bottom: 40px;
         }
 
-        .category-title {
-            font-size: 1.4em;
-            margin: 0 0 20px 15px;
-            color: var(--accent-color);
-            position: relative;
-            padding-left: 10px;
-        }
-
-        .category-title::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 70%;
-            background: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 0 15px;
-        }
 
         .card {
             flex: 0 0 calc(20% - 12px); /* 5列布局 */
@@ -506,7 +465,6 @@
             //添加网站时保证tabs.id=cardContent[key]即可
 
             this.historyTab = JSON.parse(localStorage.getItem('historyTab')) || {};
-            debugger;
             this.tabs = [
                 {id: "common", name: "常用网站"},
                 {id: "ai", name: "AI"},
@@ -521,24 +479,172 @@
                 {id: "tool", name: "工具网站"}
             ];
             this.cardContent = {
-                common: [{
-                    logo: "/images/github.png",
-                    url: "https://github.com/GitHubDaily/GitHubDaily",
-                    title: "GitHubDaily",
-                    desc: "坚持分享 GitHub 上高质量、有趣实用的开源技术教程、开发者工具、编程网站、技术资讯。A list cool, interesting projects of GitHub."
-                }, {
-                    logo: "",
-                    url: "",
-                    title: "",
-                    desc: ""
-                }
+                common: [
+                    {
+                        "url": "https://tool.liumingye.cn/wallpaper/",
+                        "logo": "",
+                        "title": "在线电脑壁纸",
+                        "desc": ""
+                    },
+                    {
+                        "url": "http://tools.liumingye.cn/music/?page=fmPage",
+                        "logo": "",
+                        "title": "在线音乐",
+                        "desc": ""
+                    },
+                    {
+                        "url": "http://www.500d.me/member/myresume/",
+                        "logo": "",
+                        "title": "我的简历-五百丁",
+                        "desc": ""
+                    },
+                    {
+                        "url": "https://jk5555.github.io/",
+                        "logo": "",
+                        "title": "Kun's Blog",
+                        "desc": ""
+                    },
+                    {
+                        "url": "https://www.github-zh.com/",
+                        "logo": "",
+                        "title": "GitHub中文社区",
+                        "desc": ""
+                    },
+                    {
+                        "url": "https://www.docs4dev.com/docs/zh",
+                        "logo": "",
+                        "title": "spring框架中文文档",
+                        "desc": "Docs4dev"
+                    },
+                    {
+                        "url": "https://chat.deepseek.com/",
+                        "logo": "",
+                        "title": "DeepSeek - 探索未至之境",
+                        "desc": ""
+                    }
                 ],
-                ai: [{
-                    logo: "https://code-thinking-1253855093.file.myqcloud.com/pics/20210614201246512.png",
-                    url: "https://programmercarl.com",
-                    title: "代码随想录",
-                    desc: "《代码随想录》，学习算法不迷路"
-                }],
+                ai: [
+                    {
+                        "url": "https://civitai.com/",
+                        "title": "Civitai",
+                        "desc": "Stable Diffusion models, embeddings, hypernetworks and more",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://www.liblib.ai/",
+                        "title": "LiblibAI",
+                        "desc": "中国最大原创AI模型分享社区",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://aitag.top/",
+                        "title": "魔咒百科词典",
+                        "desc": "ai tag",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://www.ainavpro.com/sitetag/%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B.html",
+                        "title": "代码助手",
+                        "desc": "Ai导航",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://www.aigc.cn/",
+                        "title": "AIGC导航",
+                        "desc": "全品类AIGC创作工具_生成式AI导航！",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://nav.newzone.top/",
+                        "title": "开源工具导航",
+                        "desc": "收集最新的应用和科技，提升自我和工作效率",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://newzone.top/chatgpt/",
+                        "title": "ChatGPT Shortcut",
+                        "desc": "简单易用的 ChatGPT 快捷指令表，让生产力倍增！ | 标签筛选、关键词搜索和一键复制 Prompts",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://github.com/zhayujie/chatgpt-on-wechat/issues/321",
+                        "title": "ChatGPT国内被墙问题(已解决)",
+                        "desc": "Issue #321 · zhayujie/chatgpt-on-wechat · GitHub",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://openai.com/blog/introducing-chatgpt-and-whisper-apis?continueFlag=fc57ce0801eecc17283318ab1305206bI",
+                        "title": "Introducing ChatGPT and Whisper APIs",
+                        "desc": "",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://www.aishort.top/",
+                        "title": "AiShort (ChatGPT Shortcut)",
+                        "desc": "简单易用的 ChatGPT 快捷指令表，让生产力倍增！标签筛选、关键词搜索和一键复制 Prompts | AiShort-Tag filtering, keyword search, and one-click copy prompts",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://chat.openai.com/auth/login",
+                        "title": "ChatGPT",
+                        "desc": "OpenAI",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://platform.openai.com/overview",
+                        "title": "Overview",
+                        "desc": "OpenAI API",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://tinywow.com/",
+                        "title": "Free AI Writing, PDF, Image, and other Online Tools",
+                        "desc": "TinyWow",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://i1etb6xynr.feishu.cn/wiki/Rd9GwrHnSiJGCIkaBHLcikegnXd",
+                        "title": "AI绘画宝典",
+                        "desc": "飞书云文档",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://agiclass.feishu.cn/docx/Z3Aed6qXboiF8gxGuaccNHxanOc",
+                        "title": "大模型 AI 应用全栈开发知识体系 v1.5.2",
+                        "desc": "AGIClass.ai - 飞书云文档",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint?config=%7B%7D",
+                        "title": "火山方舟管理控制台",
+                        "desc": "",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://www.doubao.com/chat/314533245871362",
+                        "title": "chat",
+                        "desc": "豆包",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://claude.ai/login",
+                        "title": "Claude",
+                        "desc": "",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://www.freedidi.com/",
+                        "title": "零度博客",
+                        "desc": "专注分享免费实用软件、AI黑科技、有趣网站及电脑系统相关安装教程！",
+                        "logo": ""
+                    },
+                    {
+                        "url": "https://kimi.moonshot.cn/chat/empty",
+                        "title": "Kimi.ai",
+                        "desc": "会推理解析，能深度思考的AI助手",
+                        "logo": ""
+                    }
+                ],
                 resource: [],
                 idea: [],
                 dev: [],
@@ -726,6 +832,37 @@
         document.body.removeChild(tempSelect);
     }
 
+    // 背景透明度优化
+    const updateBackground = (url) => {
+        document.body.style.setProperty('--custom-bg', url ? `url(${url})` : 'none');
+    };
+
+    // 初始化背景
+    const initBg = () => {
+        const bgUrl = localStorage.getItem('backgroundUrl');
+        if (bgUrl) {
+            updateBackground(bgUrl);
+        }
+    };
+
+    // 初始化主题RGB值
+    const initThemeRGB = () => {
+        const computedStyle = getComputedStyle(document.documentElement);
+        const rgb = computedStyle.getPropertyValue('--primary-bg-rgb');
+        if (!rgb) {
+            const temp = document.createElement('div');
+            temp.style.color = 'rgb(var(--primary-bg-rgb))';
+            document.body.appendChild(temp);
+            const rgbValue = getComputedStyle(temp).color;
+            document.body.removeChild(temp);
+            document.documentElement.style.setProperty(
+                '--primary-bg-rgb',
+                rgbValue.match(/\d+/g).slice(0, 3).join(', ')
+            );
+        }
+    };
+
+
     //初始化页面
     new ContentManager();
 
@@ -745,6 +882,10 @@
     engineSelect.addEventListener('change', adjustSelectWidth);
     window.addEventListener('resize', adjustSelectWidth);
     adjustSelectWidth(); // 初始化
+
+
+    initBg();
+    initThemeRGB();
 
     // 初始化示例卡片数据
     window.addEventListener('DOMContentLoaded', () => {
