@@ -338,7 +338,7 @@
                 <img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20210614201246512.png" alt="代码随想录" class="tech-icon">
                 <p class="tech-name">代码随想录</p>
             </a>
-            <a href="/guide/guide.html" target="_blank" class="tech-card" data-tooltip="自己的导航，必是精品导航">
+            <a href="/guide.html" target="_blank" class="tech-card" data-tooltip="自己的导航，必是精品导航">
                 <img src="/favicon/favicon-96x96.png" alt="我的导航" class="tech-icon">
                 <p class="tech-name">我的导航</p>
             </a>
