@@ -248,17 +248,17 @@
         }
 
         .nav-tabs {
-             display: flex;
-             gap: 8px;
-             overflow-x: auto;
-             scrollbar-width: thin;
-             padding: 12px 20px;
-             background: rgba(var(--primary-bg-rgb), 0.2);
-             backdrop-filter: blur(8px);
-             border-radius: 24px;
-             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-             max-width: 90%;
-         }
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            padding: 12px 20px;
+            background: rgba(var(--primary-bg-rgb), 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+        }
 
         .nav-tab {
             flex: 0 0 auto;
@@ -311,8 +311,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
 
@@ -462,199 +468,1148 @@
     class ContentManager {
         constructor() {
 
-            //添加网站时保证tabs.id=cardContent[key]即可
+            //添加网站 在cardContent中添加即可
 
             this.historyTab = JSON.parse(localStorage.getItem('historyTab')) || {};
-            this.tabs = [
-                {id: "common", name: "常用网站"},
-                {id: "ai", name: "AI"},
-                {id: "resource", name: "资源网站"},
-                {id: "idea", name: "idea激活"},
-                {id: "dev", name: "开发教程"},
-                {id: "study", name: "程序学习"},
-                {id: "devtool", name: "编程工具"},
-                {id: "net", name: "网络资源"},
-                {id: "email", name: "邮箱"},
-                {id: "play", name: "好玩的"},
-                {id: "tool", name: "工具网站"}
-            ];
             this.cardContent = {
-                common: [
+                "常用网站": [
                     {
                         "url": "https://tool.liumingye.cn/wallpaper/",
-                        "logo": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tool.liumingye.cn/wallpaper/&size=96",
                         "title": "在线电脑壁纸",
                         "desc": ""
                     },
                     {
                         "url": "http://tools.liumingye.cn/music/?page=fmPage",
-                        "logo": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://tools.liumingye.cn/music/?page=fmPage&size=96",
                         "title": "在线音乐",
                         "desc": ""
                     },
                     {
                         "url": "http://www.500d.me/member/myresume/",
-                        "logo": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.500d.me/member/myresume/&size=96",
                         "title": "我的简历-五百丁",
                         "desc": ""
                     },
                     {
                         "url": "https://jk5555.github.io/",
-                        "logo": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://jk5555.github.io/&size=96",
                         "title": "Kun's Blog",
                         "desc": ""
                     },
                     {
                         "url": "https://www.github-zh.com/",
-                        "logo": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.github-zh.com/&size=96",
                         "title": "GitHub中文社区",
                         "desc": ""
                     },
                     {
                         "url": "https://www.docs4dev.com/docs/zh",
-                        "logo": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.docs4dev.com/docs/zh&size=96",
                         "title": "spring框架中文文档",
                         "desc": "Docs4dev"
                     },
                     {
                         "url": "https://chat.deepseek.com/",
-                        "logo": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://chat.deepseek.com/&size=96",
                         "title": "DeepSeek - 探索未至之境",
                         "desc": ""
                     }
                 ],
-                ai: [
+                "AI": [
                     {
                         "url": "https://civitai.com/",
                         "title": "Civitai",
-                        "desc": "Stable Diffusion models, embeddings, hypernetworks and more",
-                        "logo": ""
+                        "desc": "Stable Diffusion 模型, AI绘画",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://civitai.com/&size=96"
                     },
                     {
                         "url": "https://www.liblib.ai/",
                         "title": "LiblibAI",
                         "desc": "中国最大原创AI模型分享社区",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.liblib.ai/&size=96"
                     },
                     {
                         "url": "https://aitag.top/",
                         "title": "魔咒百科词典",
-                        "desc": "ai tag",
-                        "logo": ""
+                        "desc": "AI绘画 提示词",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://aitag.top/&size=96"
                     },
                     {
                         "url": "https://www.ainavpro.com/sitetag/%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B.html",
                         "title": "代码助手",
                         "desc": "Ai导航",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.ainavpro.com/sitetag/%25E4%25BB%25A3%25E7%25A0%2581%25E5%258A%25A9%25E6%2589%258B.html&size=96"
                     },
                     {
                         "url": "https://www.aigc.cn/",
                         "title": "AIGC导航",
                         "desc": "全品类AIGC创作工具_生成式AI导航！",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.aigc.cn/&size=96"
                     },
                     {
                         "url": "https://nav.newzone.top/",
                         "title": "开源工具导航",
                         "desc": "收集最新的应用和科技，提升自我和工作效率",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://nav.newzone.top/&size=96"
                     },
                     {
                         "url": "https://newzone.top/chatgpt/",
                         "title": "ChatGPT Shortcut",
-                        "desc": "简单易用的 ChatGPT 快捷指令表，让生产力倍增！ | 标签筛选、关键词搜索和一键复制 Prompts",
-                        "logo": ""
+                        "desc": "简单易用的 ChatGPT 快捷指令表",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://newzone.top/chatgpt/&size=96"
                     },
                     {
                         "url": "https://github.com/zhayujie/chatgpt-on-wechat/issues/321",
-                        "title": "ChatGPT国内被墙问题(已解决)",
+                        "title": "ChatGPT国内被墙问题",
                         "desc": "Issue #321 · zhayujie/chatgpt-on-wechat · GitHub",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://github.com/zhayujie/chatgpt-on-wechat/issues/321&size=96"
                     },
                     {
                         "url": "https://openai.com/blog/introducing-chatgpt-and-whisper-apis?continueFlag=fc57ce0801eecc17283318ab1305206bI",
                         "title": "Introducing ChatGPT and Whisper APIs",
                         "desc": "",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://openai.com/blog/introducing-chatgpt-and-whisper-apis?continueFlag=fc57ce0801eecc17283318ab1305206bI&size=96"
                     },
                     {
                         "url": "https://www.aishort.top/",
                         "title": "AiShort (ChatGPT Shortcut)",
-                        "desc": "简单易用的 ChatGPT 快捷指令表，让生产力倍增！标签筛选、关键词搜索和一键复制 Prompts | AiShort-Tag filtering, keyword search, and one-click copy prompts",
-                        "logo": ""
+                        "desc": "简单易用的 ChatGPT 快捷指令表，让生产力倍增",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.aishort.top/&size=96"
                     },
                     {
-                        "url": "https://chat.openai.com/auth/login",
+                        "url": "https://chat.openai.com",
                         "title": "ChatGPT",
                         "desc": "OpenAI",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://chat.openai.com&size=96"
                     },
                     {
                         "url": "https://platform.openai.com/overview",
                         "title": "Overview",
                         "desc": "OpenAI API",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://platform.openai.com/overview&size=96"
                     },
                     {
                         "url": "https://tinywow.com/",
                         "title": "Free AI Writing, PDF, Image, and other Online Tools",
                         "desc": "TinyWow",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tinywow.com/&size=96"
                     },
                     {
                         "url": "https://i1etb6xynr.feishu.cn/wiki/Rd9GwrHnSiJGCIkaBHLcikegnXd",
                         "title": "AI绘画宝典",
                         "desc": "飞书云文档",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://i1etb6xynr.feishu.cn/wiki/Rd9GwrHnSiJGCIkaBHLcikegnXd&size=96"
                     },
                     {
                         "url": "https://agiclass.feishu.cn/docx/Z3Aed6qXboiF8gxGuaccNHxanOc",
-                        "title": "大模型 AI 应用全栈开发知识体系 v1.5.2",
+                        "title": "大模型AI应用全栈开发知识体系",
                         "desc": "AGIClass.ai - 飞书云文档",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://agiclass.feishu.cn/docx/Z3Aed6qXboiF8gxGuaccNHxanOc&size=96"
                     },
                     {
                         "url": "https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint?config=%7B%7D",
                         "title": "火山方舟管理控制台",
                         "desc": "",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint?config=%257B%257D&size=96"
                     },
                     {
                         "url": "https://www.doubao.com/chat/314533245871362",
-                        "title": "chat",
-                        "desc": "豆包",
-                        "logo": ""
+                        "title": "豆包AI",
+                        "desc": "豆包聊天机器人",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.doubao.com/chat/314533245871362&size=96"
                     },
                     {
                         "url": "https://claude.ai/login",
                         "title": "Claude",
-                        "desc": "",
-                        "logo": ""
+                        "desc": "Claude大模型",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://claude.ai/login&size=96"
                     },
                     {
                         "url": "https://www.freedidi.com/",
                         "title": "零度博客",
                         "desc": "专注分享免费实用软件、AI黑科技、有趣网站及电脑系统相关安装教程！",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.freedidi.com/&size=96"
                     },
                     {
                         "url": "https://kimi.moonshot.cn/chat/empty",
                         "title": "Kimi.ai",
                         "desc": "会推理解析，能深度思考的AI助手",
-                        "logo": ""
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://kimi.moonshot.cn/chat/empty&size=96"
+                    },
+                    {
+                        "url": "https://chrome.google.com/webstore/category/extensions?hl=zh-CN",
+                        "title": "Chrome 网上应用店",
+                        "desc": "扩展程序",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://chrome.google.com/webstore/category/extensions?hl=zh-CN&size=96"
                     }
                 ],
-                resource: [],
-                idea: [],
-                dev: [],
-                study: [],
-                net: [],
-                email: [],
-                play: [],
-                tool: [],
+                "资源网站": [
+                    {
+                        "url": "https://tmioe.com/free",
+                        "title": "资源分享",
+                        "desc": "ZAPRO · 杂铺",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tmioe.com/free&size=96"
+                    },
+                    {
+                        "url": "https://www.tboxn.com/#term-15",
+                        "title": "Tbox导航",
+                        "desc": "只收录优质在线工具的导航网站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.tboxn.com/#term-15&size=96"
+                    },
+                    {
+                        "url": "https://soft.macxf.com/",
+                        "title": "软件先锋-软件下载-软件下载平台-电脑软件-电脑软件下载",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://soft.macxf.com/&size=96"
+                    },
+                    {
+                        "url": "http://rutracker.org/forum/index.php",
+                        "title": "RuTracker.org",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://rutracker.org/forum/index.php&size=96"
+                    },
+                    {
+                        "url": "https://byrut.org/",
+                        "title": "[最新版本2022]免费破解游戏",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://byrut.org/&size=96"
+                    },
+                    {
+                        "url": "http://toolwa.com/github/",
+                        "title": "GitHub 加速下载",
+                        "desc": "在线工具",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://toolwa.com/github/&size=96"
+                    },
+                    {
+                        "url": "https://www.lovejay.top/",
+                        "title": "Jay的资源库",
+                        "desc": "互联网资源集大成者",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.lovejay.top/&size=96"
+                    },
+                    {
+                        "url": "https://tuostudy.com/",
+                        "title": "图欧学习资源库",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tuostudy.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.jiumodiary.com/",
+                        "title": "Jiumo Search",
+                        "desc": "鸠摩搜索 - 文档搜索引擎",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.jiumodiary.com/&size=96"
+                    },
+                    {
+                        "url": "https://smsjisu.com/",
+                        "title": "极速接码平台",
+                        "desc": "免费的在线验证码接收平台",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://smsjisu.com/&size=96"
+                    },
+                    {
+                        "url": "https://sms.qisms.com/index",
+                        "title": "首页-北美号码接码",
+                        "desc": "北美验证码号码",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://sms.qisms.com/index&size=96"
+                    },
+                    {
+                        "url": "https://sms-activate.org/getNumber",
+                        "title": "sms-activate外国号码接码平台",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://sms-activate.org/getNumber&size=96"
+                    },
+                    {
+                        "url": "https://w1.v2ai.top/user",
+                        "title": "V2free梯子节点",
+                        "desc": "https://v2free.org",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://w1.v2ai.top/user&size=96"
+                    },
+                    {
+                        "url": "https://xn--4gq62f52gdss.xyz/#/subscribe",
+                        "title": "一元机场",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://xn--4gq62f52gdss.xyz/#/subscribe&size=96"
+                    },
+                    {
+                        "url": "https://xxxxx525.com/",
+                        "title": "Switch520",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://xxxxx525.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.sleepymoon.cyou/2023/stardewvalleymods/",
+                        "title": "星露谷物语",
+                        "desc": "1.5.6 版本自用 MOD 记录",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.sleepymoon.cyou/2023/stardewvalleymods/&size=96"
+                    }
+                ],
+                "idea激活": [
+                    {
+                        "url": "http://idea.medeming.com/code/",
+                        "title": "程序员开发专属激活码",
+                        "desc": "开启程序人生",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://idea.medeming.com/code/&size=96"
+                    },
+                    {
+                        "url": "https://shimo.im/docs/WY3hd8Jt8KHgvVty/read",
+                        "title": "软件激活教程",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://shimo.im/docs/WY3hd8Jt8KHgvVty/read&size=96"
+                    },
+                    {
+                        "url": "https://zhile.io/custom-license.html",
+                        "title": "Custom license",
+                        "desc": "知了",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zhile.io/custom-license.html&size=96"
+                    },
+                    {
+                        "url": "https://zhile.io/",
+                        "title": "知了",
+                        "desc": "idea破解码分享",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zhile.io/&size=96"
+                    },
+                    {
+                        "url": "https://www.guidgen.com/",
+                        "title": "JRebel激活",
+                        "desc": "GUIDs online generieren",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.guidgen.com/&size=96"
+                    },
+                    {
+                        "url": "https://baomidou.com/guide/quick-start.html",
+                        "title": "MyBatis-Plus",
+                        "desc": "快速开始",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://baomidou.com/guide/quick-start.html&size=96"
+                    },
+                    {
+                        "url": "http://idea.studycoder.com/",
+                        "title": "idea激活，idea激活码",
+                        "desc": "idea激活码",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://idea.studycoder.com/&size=96"
+                    },
+                    {
+                        "url": "https://plugins.jetbrains.com/docs/intellij/working-with-custom-actions.html#registering-a-custom-action",
+                        "title": "idea插件开发文档",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://plugins.jetbrains.com/docs/intellij/working-with-custom-actions.html#registering-a-custom-action&size=96"
+                    },
+                    {
+                        "url": "http://idea.94goo.com/",
+                        "title": "最新IntelliJ IDEA激活码破解教程",
+                        "desc": "永久免费激活码 - www.94goo.com",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://idea.94goo.com/&size=96"
+                    }
+                ],
+                "开发教程": [
+                    {
+                        "url": "http://bbs.csdn.net/forums/Java",
+                        "title": "Java论坛-CSDN论坛",
+                        "desc": "Code Writers（带你学编程）社区-CSDN社区云",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://bbs.csdn.net/forums/Java&size=96"
+                    },
+                    {
+                        "url": "https://www.oschina.net/",
+                        "title": "开源中国社区",
+                        "desc": "OSCHINA - 中文开源技术交流社区",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.oschina.net/&size=96"
+                    },
+                    {
+                        "url": "http://www.mayikt.com/",
+                        "title": "mayiketang-专注于分布式&微服务的在线教育",
+                        "desc": "蚂蚁课堂-每特教育-专注于互联网年轻人的IT在线教育",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.mayikt.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.imooc.com/",
+                        "title": "慕课网-程序员的梦工厂",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.imooc.com/&size=96"
+                    },
+                    {
+                        "url": "https://springcloud.cc/",
+                        "title": "Spring Cloud中文网-官方文档中文版",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://springcloud.cc/&size=96"
+                    },
+                    {
+                        "url": "https://e.xitu.io/",
+                        "title": "掘金酱",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://e.xitu.io/&size=96"
+                    },
+                    {
+                        "url": "http://nodejs.cn/api/",
+                        "title": "API 文档 | Node.js 中文网",
+                        "desc": "首页 | Node.js v23 文档",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nodejs.cn/api/&size=96"
+                    },
+                    {
+                        "url": "https://www.webpackjs.com/guides/",
+                        "title": "指南 | webpack 中文网",
+                        "desc": "指南 | webpack 中文文档",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.webpackjs.com/guides/&size=96"
+                    },
+                    {
+                        "url": "http://www.mybatis.cn/",
+                        "title": "MyBatis中文官网",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.mybatis.cn/&size=96"
+                    },
+                    {
+                        "url": "http://www.mybatis.org/mybatis-3/zh/configuration.html",
+                        "title": "mybatis – MyBatis 3 | 学习",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.mybatis.org/mybatis-3/zh/configuration.html&size=96"
+                    },
+                    {
+                        "url": "https://man.linuxde.net/",
+                        "title": "Linux命令大全(手册)_Linux常用命令行实例详解_Linux命令学习手册",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://man.linuxde.net/&size=96"
+                    },
+                    {
+                        "url": "https://www.w3cschool.cn/javascript/",
+                        "title": "javascript教程_w3cschool",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.w3cschool.cn/javascript/&size=96"
+                    },
+                    {
+                        "url": "http://houdunren.gitee.io/note/js/1%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html",
+                        "title": "web前端教程 | 后盾人",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://houdunren.gitee.io/note/js/1%2520%25E5%259F%25BA%25E7%25A1%2580%25E7%259F%25A5%25E8%25AF%2586.html&size=96"
+                    },
+                    {
+                        "url": "https://leetcode-cn.com/problemset/all/",
+                        "title": "LeetCode",
+                        "desc": "题库 - 力扣 (LeetCode) 全球极客挚爱的技术成长平台",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://leetcode-cn.com/problemset/all/&size=96"
+                    },
+                    {
+                        "url": "https://www.docs4dev.com/docs/zh",
+                        "title": "Docs4dev",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.docs4dev.com/docs/zh&size=96"
+                    },
+                    {
+                        "url": "https://ipchaxun.com/",
+                        "title": "ip查询",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ipchaxun.com/&size=96"
+                    },
+                    {
+                        "url": "https://mybatis.org/mybatis-3/zh/index.html",
+                        "title": "mybatis",
+                        "desc": "MyBatis 3 | 简介",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://mybatis.org/mybatis-3/zh/index.html&size=96"
+                    },
+                    {
+                        "url": "https://zhuanlan.zhihu.com/p/131299779",
+                        "title": "日志链路跟踪",
+                        "desc": "微服务分布式架构中，如何实现日志链路跟踪？ - 知乎",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zhuanlan.zhihu.com/p/131299779&size=96"
+                    },
+                    {
+                        "url": "https://zhuanlan.zhihu.com/p/393734591",
+                        "title": "学习 MySQL",
+                        "desc": "如何系统学习 MySQL? - 知乎",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zhuanlan.zhihu.com/p/393734591&size=96"
+                    },
+                    {
+                        "url": "https://javaguide.cn/",
+                        "title": "JavaGuide",
+                        "desc": "Java 面试指南 | JavaGuide",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://javaguide.cn/&size=96"
+                    },
+                    {
+                        "url": "https://www.yuque.com/snailclimb/mf2z3k",
+                        "title": "《Java面试指北》",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.yuque.com/snailclimb/mf2z3k&size=96"
+                    }
+                ],
+                "程序学习": [
+                    {
+                        "url": "https://www.moyoo.net/",
+                        "title": "墨月网络",
+                        "desc": "实用资讯信息",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.moyoo.net/&size=96"
+                    },
+                    {
+                        "url": "https://gitee.com/explore",
+                        "title": "开源项目",
+                        "desc": "码云 Gitee.com",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gitee.com/explore&size=96"
+                    },
+                    {
+                        "url": "http://www.iteye.com/",
+                        "title": "ITeye开发交流社区",
+                        "desc": "ITeye Java编程",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.iteye.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.52pojie.cn/portal.php",
+                        "title": "吾爱破解网",
+                        "desc": "吾爱破解门户 - 52pojie.cn",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.52pojie.cn/portal.php&size=96"
+                    },
+                    {
+                        "url": "https://greasyfork.org/zh-CN/scripts",
+                        "title": "油猴用户脚本列表",
+                        "desc": "用户脚本",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://greasyfork.org/zh-CN/scripts&size=96"
+                    },
+                    {
+                        "url": "https://segmentfault.com/",
+                        "title": "SegmentFault 思否",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://segmentfault.com/&size=96"
+                    },
+                    {
+                        "url": "http://www.open-open.com/",
+                        "title": "Java开源大全",
+                        "desc": "开源项目,开源代码,开源文档,开源新闻,开源社区_深度开源",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.open-open.com/&size=96"
+                    },
+                    {
+                        "url": "https://mp.weixin.qq.com/s?__biz=MzAxNDMwMTMwMw==&mid=2247490205&idx=1&sn=529fb46dbe26057d98c59709b2f29a4f&chksm=9b943b85ace3b293421a720ba875589cc535dc6a774711195f7c6b7b2dc4d467a55275d86cba&mpshare=1&scene=24&srcid=#rd",
+                        "title": "11个web开源项目",
+                        "desc": "【开源系统】11个springboot快速开发的项目，接私活利器",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://mp.weixin.qq.com/s?__biz=MzAxNDMwMTMwMw==&mid=2247490205&idx=1&sn=529fb46dbe26057d98c59709b2f29a4f&chksm=9b943b85ace3b293421a720ba875589cc535dc6a774711195f7c6b7b2dc4d467a55275d86cba&mpshare=1&scene=24&srcid=#rd&size=96"
+                    },
+                    {
+                        "url": "https://tool.lu/",
+                        "title": "在线工具",
+                        "desc": "程序员的工具箱",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tool.lu/&size=96"
+                    },
+                    {
+                        "url": "https://www.nowcoder.com/185788417",
+                        "title": "牛客网",
+                        "desc": "牛客网 - 求职就业一站解决_牛客网",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.nowcoder.com/185788417&size=96"
+                    },
+                    {
+                        "url": "https://www.iconfont.cn/",
+                        "title": "Iconfont-阿里巴巴矢量图标库",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.iconfont.cn/&size=96"
+                    },
+                    {
+                        "url": "http://blog.csdn.net/zht666/article/details/8528410",
+                        "title": "java论坛汇总",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://blog.csdn.net/zht666/article/details/8528410&size=96"
+                    },
+                    {
+                        "url": "http://ai.baidu.com/",
+                        "title": "百度AI开放平台",
+                        "desc": "百度AI开放平台-全球领先的人工智能服务平台-百度AI开放平台",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://ai.baidu.com/&size=96"
+                    },
+                    {
+                        "url": "http://www.zuidaima.com/",
+                        "title": "最代码",
+                        "desc": "最全面，最专业的源代码分享网站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.zuidaima.com/&size=96"
+                    },
+                    {
+                        "url": "https://123apps.com/cn/",
+                        "title": "123apps",
+                        "desc": "免费网络应用",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://123apps.com/cn/&size=96"
+                    },
+                    {
+                        "url": "http://www.ypojie.com/",
+                        "title": "易破解",
+                        "desc": "给你所需要的内容YPOJIE.COM！",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.ypojie.com/&size=96"
+                    },
+                    {
+                        "url": "https://hutool.cn/",
+                        "title": "Hutool",
+                        "desc": "java开发工具类库",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hutool.cn/&size=96"
+                    },
+                    {
+                        "url": "http://www.zuidaima.com/share.htm",
+                        "title": "分享列表-最代码",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.zuidaima.com/share.htm&size=96"
+                    },
+                    {
+                        "url": "http://www.matools.com/api/java8",
+                        "title": "Java 8 中文版",
+                        "desc": "在线API中文手册",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.matools.com/api/java8&size=96"
+                    },
+                    {
+                        "url": "https://ipchaxun.com/",
+                        "title": "ip地址查询",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ipchaxun.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.chuangkit.com/?dontjump=1",
+                        "title": "创客贴",
+                        "desc": "平面设计作图神器_免费设计模板_在线稿定设计印刷",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.chuangkit.com/?dontjump=1&size=96"
+                    },
+                    {
+                        "url": "https://www.pdfpai.com/",
+                        "title": "PDF派",
+                        "desc": "20个免费的在线PDF工具包",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.pdfpai.com/&size=96"
+                    },
+                    {
+                        "url": "https://nodesign.dev/",
+                        "title": "UI, css资源",
+                        "desc": "UI设计css资源等工具网站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://nodesign.dev/&size=96"
+                    },
+                    {
+                        "url": "https://www.springcloud.cc/spring-reference.html",
+                        "title": "Spring官方文档中文版",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.springcloud.cc/spring-reference.html&size=96"
+                    },
+                    {
+                        "url": "https://www.natfrp.com/?page=panel",
+                        "title": "Sakura Frp",
+                        "desc": "内网穿透管理面板",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.natfrp.com/?page=panel&size=96"
+                    },
+                    {
+                        "url": "https://www.bootcdn.cn/",
+                        "title": "BootCDN",
+                        "desc": "Bootstrap 中文网开源项目库",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.bootcdn.cn/&size=96"
+                    },
+                    {
+                        "url": "https://www.deepin.org/zh/",
+                        "title": "深度科技社区",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.deepin.org/zh/&size=96"
+                    },
+                    {
+                        "url": "https://tianqiapi.com/",
+                        "title": "免费天气API接口",
+                        "desc": "天气预报接口|全球天气API接口|气象预警|空气质量",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tianqiapi.com/&size=96"
+                    },
+                    {
+                        "url": "https://tool.lu/coderunner",
+                        "title": "代码在线运行 - 在线工具",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tool.lu/coderunner&size=96"
+                    },
+                    {
+                        "url": "http://tool.liumingye.cn/",
+                        "title": "刘明野的工具箱",
+                        "desc": "实用编程工具箱",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://tool.liumingye.cn/&size=96"
+                    },
+                    {
+                        "url": "https://mp3cut.net/cn/",
+                        "title": "音乐剪辑",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://mp3cut.net/cn/&size=96"
+                    },
+                    {
+                        "url": "https://cdkm.com/cn/pdf-to-txt",
+                        "title": "PDF转TXT",
+                        "desc": "免费在线将PDF文件转换成TXT",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cdkm.com/cn/pdf-to-txt&size=96"
+                    },
+                    {
+                        "url": "https://github.welab.eu.org/",
+                        "title": "GitHub 加速下载",
+                        "desc": "在线工具",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://github.welab.eu.org/&size=96"
+                    },
+                    {
+                        "url": "https://web.baimiaoapp.com/",
+                        "title": "图片转文字在线",
+                        "desc": "图片文字提取 - 网页OCR文字识别 - 白描网页版",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://web.baimiaoapp.com/&size=96"
+                    },
+                    {
+                        "url": "https://site.douban.com/160714/room/1706341/",
+                        "title": "Java学习论坛-追梦人",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://site.douban.com/160714/room/1706341/&size=96"
+                    },
+                    {
+                        "url": "http://bbs.bccn.net/forum-8-1.html",
+                        "title": "JAVA编程论坛",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://bbs.bccn.net/forum-8-1.html&size=96"
+                    },
+                    {
+                        "url": "https://github.com/",
+                        "title": "GitHub",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://github.com/&size=96"
+                    },
+                    {
+                        "url": "http://www.csdn.net/?ref=toolbar",
+                        "title": "CSDN首页",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.csdn.net/?ref=toolbar&size=96"
+                    },
+                    {
+                        "url": "https://iconbuddy.com/logo-maker",
+                        "title": "Logo maker",
+                        "desc": "svg logo 制作工具网站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://iconbuddy.com/logo-maker&size=96"
+                    },
+                    {
+                        "url": "https://realfavicongenerator.net/",
+                        "title": "网站图标生成器",
+                        "desc": "可在所有浏览器上提供完美图标",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://realfavicongenerator.net/&size=96"
+                    },
+                    {
+                        "url": "https://fontawesome.com/search?q=category&o=r",
+                        "title": "Font Awesome",
+                        "desc": "实用的图标工具，可直接引用",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://fontawesome.com/search?q=category&o=r&size=96"
+                    },
+                    {
+                        "url": "https://dashboard.algolia.com/apps/JQPZBOKO43/events/health?from=2025-03-07&to=2025-03-13",
+                        "title": "Events | Algolia",
+                        "desc": "es站内搜索",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dashboard.algolia.com/apps/JQPZBOKO43/events/health?from=2025-03-07&to=2025-03-13&size=96"
+                    },
+                    {
+                        "url": "https://www.bing.com/webmasters/home?siteUrl=https://jk5555.github.io/",
+                        "title": "Bing Webmaster Tools",
+                        "desc": "必应搜索SEO控制台",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.bing.com/webmasters/home?siteUrl=https://jk5555.github.io/&size=96"
+                    },
+                    {
+                        "url": "https://search.google.com/search-console?resource_id=https://jk5555.github.io/",
+                        "title": "google-search-console",
+                        "desc": "google搜索SEO控制台",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://search.google.com/search-console?resource_id=https://jk5555.github.io/&size=96"
+                    },
+                    {
+                        "url": "https://imageresizer.com/zh/%E5%9B%BE%E5%83%8F%E5%8E%8B%E7%BC%A9/%E7%BC%96%E8%BE%91",
+                        "title": "图像压缩器",
+                        "desc": "无损压缩 - 高质量在线压缩图像",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://imageresizer.com/zh/%25E5%259B%25BE%25E5%2583%258F%25E5%258E%258B%25E7%25BC%25A9/%25E7%25BC%2596%25E8%25BE%2591&size=96"
+                    }
+                ],
+                "网络资源": [
+                    {
+                        "url": "http://yuanxiao.boxuegu.com/index.html#/home",
+                        "title": "博学谷",
+                        "desc": "传智 | 高校教辅平台-首页",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://yuanxiao.boxuegu.com/index.html#/home&size=96"
+                    },
+                    {
+                        "url": "http://www.oldmanemu.net/",
+                        "title": "老男人游戏网",
+                        "desc": "游戏资源下载",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.oldmanemu.net/&size=96"
+                    },
+                    {
+                        "url": "https://pixivic.com/",
+                        "title": "Pixiv",
+                        "desc": "[P站]-(搜图用)",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://pixivic.com/&size=96"
+                    },
+                    {
+                        "url": "https://postimg.cc/DJ4qvwqR/090bf789",
+                        "title": "在线图床",
+                        "desc": "LOL万花通灵妮蔻4k壁纸 彼岸图网 — Postimages",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://postimg.cc/DJ4qvwqR/090bf789&size=96"
+                    },
+                    {
+                        "url": "https://tophub.today/",
+                        "title": "今日热榜",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tophub.today/&size=96"
+                    },
+                    {
+                        "url": "http://www.addog.vip/",
+                        "title": "营销策略大全网址导航",
+                        "desc": "品牌/策划/营销/创意/文案",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.addog.vip/&size=96"
+                    },
+                    {
+                        "url": "https://app.xunjiepdf.com/txt2epub/",
+                        "title": "迅捷PDF转换器在线免费版",
+                        "desc": "TXT转EPUB –在线TXT转EPUB转换器",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://app.xunjiepdf.com/txt2epub/&size=96"
+                    },
+                    {
+                        "url": "http://www.coder100.com/",
+                        "title": "码农集市",
+                        "desc": "专业分享IT编程学习资源",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.coder100.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.foundertype.com/index.php/FindFont/index",
+                        "title": "方正字库官网",
+                        "desc": "免费字体下载_PS字体下载_方正字体下载",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.foundertype.com/index.php/FindFont/index&size=96"
+                    },
+                    {
+                        "url": "https://www.chaonengso.com/",
+                        "title": "超能搜",
+                        "desc": "百度网盘搜索神器",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.chaonengso.com/&size=96"
+                    },
+                    {
+                        "url": "http://www.languangdy.com/",
+                        "title": "中国蓝光网",
+                        "desc": "蓝光电影爱好者",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.languangdy.com/&size=96"
+                    },
+                    {
+                        "url": "https://spankbang.com/6tou4/playlist/porn",
+                        "title": "桥本有菜 Playlist",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://spankbang.com/6tou4/playlist/porn&size=96"
+                    },
+                    {
+                        "url": "https://www.yeeach.com/post/1367",
+                        "title": "磁力搜索引擎",
+                        "desc": "值得推荐的磁力搜索引擎",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.yeeach.com/post/1367&size=96"
+                    },
+                    {
+                        "url": "https://www.gaituya.com/",
+                        "title": "改图鸭",
+                        "desc": "在线图片压缩软件",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.gaituya.com/&size=96"
+                    },
+                    {
+                        "url": "https://huaban.com/pins/4464178424",
+                        "title": "花瓣网",
+                        "desc": "图片_三角函数图片素材",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://huaban.com/pins/4464178424&size=96"
+                    },
+                    {
+                        "url": "https://www.xyhdm.cc/",
+                        "title": "樱花动漫",
+                        "desc": "专注动漫的门户网站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.xyhdm.cc/&size=96"
+                    },
+                    {
+                        "url": "https://www.tboxn.com/#term-13",
+                        "title": "Tbox导航",
+                        "desc": "只收录优质在线工具的导航网站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.tboxn.com/#term-13&size=96"
+                    },
+                    {
+                        "url": "https://www.zhangweishihundan.com/",
+                        "title": "张伟是混蛋.COM",
+                        "desc": "『爱情公寓』特别站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.zhangweishihundan.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.ypojie.com/",
+                        "title": "亿破姐",
+                        "desc": "给你所需要的内容！",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.ypojie.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.tonglulvyou.com/",
+                        "title": "大米星球",
+                        "desc": "大米星球在线观看免费版电视剧",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.tonglulvyou.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.zxzj.pro/",
+                        "title": "在线之家",
+                        "desc": "在线观看最新美剧|最新韩剧|天天美剧|人人美剧",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.zxzj.pro/&size=96"
+                    },
+                    {
+                        "url": "https://10beasts.net/recommend/",
+                        "title": "Barry外网导航",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://10beasts.net/recommend/&size=96"
+                    },
+                    {
+                        "url": "http://9527dm.com/",
+                        "title": "9527动漫",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://9527dm.com/&size=96"
+                    },
+                    {
+                        "url": "http://pic.netbian.com/",
+                        "title": "彼岸图网",
+                        "desc": "高清壁纸站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pic.netbian.com/&size=96"
+                    },
+                    {
+                        "url": "http://www.cocxx.cn/",
+                        "title": "小曦Coc免费辅助官网",
+                        "desc": "部落冲突辅助官网",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.cocxx.cn/&size=96"
+                    },
+                    {
+                        "url": "http://www.galmoe.com/",
+                        "title": "b站封面提取",
+                        "desc": "_bilibili封面提取_av号封面提取",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.galmoe.com/&size=96"
+                    },
+                    {
+                        "url": "http://www.lotpc.com/",
+                        "title": "装机之家",
+                        "desc": "组装电脑配置清单及价格_台式电脑主机配置推荐",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.lotpc.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.sq688.com/",
+                        "title": "超高无损音乐",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.sq688.com/&size=96"
+                    },
+                    {
+                        "url": "http://www.51ape.com/ape/49049.html",
+                        "title": "51Ape.Com无损音乐",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.51ape.com/ape/49049.html&size=96"
+                    },
+                    {
+                        "url": "http://www.doutula.com/",
+                        "title": "表情包",
+                        "desc": "真正的斗图网站",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.doutula.com/&size=96"
+                    },
+                    {
+                        "url": "http://tv.wandhi.com/go.html",
+                        "title": "玩的嗨TV",
+                        "desc": "vip视频在线解析",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://tv.wandhi.com/go.html&size=96"
+                    },
+                    {
+                        "url": "https://173app.com/chrome-ext",
+                        "title": "谷歌插件",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://173app.com/chrome-ext&size=96"
+                    },
+                    {
+                        "url": "http://www.z-sms.com/",
+                        "title": "在线云短信网页版",
+                        "desc": "免费接码平台",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.z-sms.com/&size=96"
+                    },
+                    {
+                        "url": "http://zimiyy.xyz/",
+                        "title": "子米影院",
+                        "desc": "好看的电视剧_好看的电影",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://zimiyy.xyz/&size=96"
+                    },
+                    {
+                        "url": "https://www.futurepedia.io/",
+                        "title": "Futurepedia",
+                        "desc": "Find The Best AI Tools & Software",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.futurepedia.io/&size=96"
+                    },
+                    {
+                        "url": "https://x.magiconch.com/",
+                        "title": "神奇海螺",
+                        "desc": "多格模板，只需添加背景 - 梗图生成器",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://x.magiconch.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.pinterest.com/",
+                        "title": "Pinterest",
+                        "desc": "图片壁纸素材",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.pinterest.com/&size=96"
+                    }
+                ],
+                "邮箱": [
+                    {
+                        "url": "https://mail.qq.com/cgi-bin/frame_html?sid=MYqyfDPempTTADJu&r=424e7a45c23af55355d39c2f67ca3069",
+                        "title": "QQ邮箱",
+                        "desc": "登录QQ邮箱",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://mail.qq.com/cgi-bin/frame_html?sid=MYqyfDPempTTADJu&r=424e7a45c23af55355d39c2f67ca3069&size=96"
+                    },
+                    {
+                        "url": "https://mail.163.com/js6/main.jsp?sid=mBsUvGWWyfCGuijmVXWWTWUnicbAKvRi&df=mail163_letter#module=mbox.ListModule%7C%7B%22fid%22%3A1%2C%22order%22%3A%22date%22%2C%22desc%22%3Atrue%7D",
+                        "title": "网易邮箱6.0版",
+                        "desc": "163网易免费邮-你的专业电子邮局",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://mail.163.com/js6/main.jsp?sid=mBsUvGWWyfCGuijmVXWWTWUnicbAKvRi&df=mail163_letter#module=mbox.ListModule%257C%257B%2522fid%2522%253A1%252C%2522order%2522%253A%2522date%2522%252C%2522desc%2522%253Atrue%257D&size=96"
+                    },
+                    {
+                        "url": "https://qiye.163.com/login/",
+                        "title": "汉得邮箱",
+                        "desc": "网易企业邮箱 - 登录入口",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://qiye.163.com/login/&size=96"
+                    }
+                ],
+                "好玩的": [
+                    {
+                        "url": "https://witeboard.com/907dd810-5528-11e9-9c9e-a5188fa36e40",
+                        "title": "Witeboard",
+                        "desc": "Witeboard-画板",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://witeboard.com/907dd810-5528-11e9-9c9e-a5188fa36e40&size=96"
+                    },
+                    {
+                        "url": "https://steamdb.info/sales/",
+                        "title": "Steam Database",
+                        "desc": "steam数据监测",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://steamdb.info/sales/&size=96"
+                    },
+                    {
+                        "url": "http://www.gifntext.com/",
+                        "title": "Gifntext",
+                        "desc": "在线编辑gif动态图",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.gifntext.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.pexels.com/",
+                        "title": "Pexels",
+                        "desc": "Pexels-免费图片与视频素材",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.pexels.com/&size=96"
+                    },
+                    {
+                        "url": "http://geektyper.com/",
+                        "title": "冒充黑客",
+                        "desc": "在线网页装逼",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://geektyper.com/&size=96"
+                    },
+                    {
+                        "url": "https://trace.moe",
+                        "title": "Anime Scene Search Engine",
+                        "desc": "根据动漫截图搜索动漫",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://trace.moe&size=96"
+                    },
+                    {
+                        "url": "https://www.yikm.net/",
+                        "title": "FC在线游戏",
+                        "desc": "小霸王，其乐无穷。紅白机游戏",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.yikm.net/&size=96"
+                    },
+                    {
+                        "url": "https://dos.zczc.cz/",
+                        "title": "在线 DOS 游戏",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dos.zczc.cz/&size=96"
+                    },
+                    {
+                        "url": "http://www.famicn.com/",
+                        "title": "中文家用游戏博物馆",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.famicn.com/&size=96"
+                    },
+                    {
+                        "url": "https://panzoid.com/",
+                        "title": "Panzoid",
+                        "desc": "Panzoid（视频片头制作）",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://panzoid.com/&size=96"
+                    },
+                    {
+                        "url": "https://www.remove.bg/",
+                        "title": "remove.bg（在线抠图）",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.remove.bg/&size=96"
+                    },
+                    {
+                        "url": "https://www.zitijia.com/",
+                        "title": "字体家官网",
+                        "desc": "免费字体下载,正版字体在线授权平台",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.zitijia.com/&size=96"
+                    },
+                    {
+                        "url": "http://web.airdroid.com/",
+                        "title": "AirDroid Web",
+                        "desc": "网页上管理你的手机",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://web.airdroid.com/&size=96"
+                    },
+                    {
+                        "url": "https://cloudgame.douyu.com/directory",
+                        "title": "斗鱼云游戏官网",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cloudgame.douyu.com/directory&size=96"
+                    },
+                    {
+                        "url": "https://zhuti.designer.xiaomi.com/docs/guide/#%E4%B8%BB%E9%A2%98%E5%8C%85%E7%BB%93%E6%9E%84",
+                        "title": "小米主题",
+                        "desc": "小米主题开发入门",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zhuti.designer.xiaomi.com/docs/guide/#%25E4%25B8%25BB%25E9%25A2%2598%25E5%258C%2585%25E7%25BB%2593%25E6%259E%2584&size=96"
+                    },
+                    {
+                        "url": "https://www.degraeve.com/img2txt.php",
+                        "title": "IMG2TXT",
+                        "desc": "图片转文字",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.degraeve.com/img2txt.php&size=96"
+                    },
+                    {
+                        "url": "https://www.cn-ki.net/",
+                        "title": "iData-知识检索",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.cn-ki.net/&size=96"
+                    },
+                    {
+                        "url": "https://gba.heheda.top/",
+                        "title": "GBA游戏盒",
+                        "desc": "在线畅玩经典游戏",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gba.heheda.top/&size=96"
+                    },
+                    {
+                        "url": "https://gamebox.heheda.top/",
+                        "title": "游戏盒【GameBox】",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gamebox.heheda.top/&size=96"
+                    }
+                ],
+                "工具网站": [
+                    {
+                        "url": "http://idea.medeming.com/code/",
+                        "title": "IDEA激活码",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://idea.medeming.com/code/&size=96"
+                    },
+                    {
+                        "url": "https://shimo.im/docs/WY3hd8Jt8KHgvVty/read",
+                        "title": "软件激活教程",
+                        "desc": "无权限",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://shimo.im/docs/WY3hd8Jt8KHgvVty/read&size=96"
+                    },
+                    {
+                        "url": "https://zhile.io/custom-license.html",
+                        "title": "Custom license | 知了",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zhile.io/custom-license.html&size=96"
+                    },
+                    {
+                        "url": "https://zhile.io/",
+                        "title": "知了",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zhile.io/&size=96"
+                    },
+                    {
+                        "url": "https://www.guidgen.com/",
+                        "title": "JRebel激活",
+                        "desc": "GUIDs online generieren",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.guidgen.com/&size=96"
+                    },
+                    {
+                        "url": "https://chrome.google.com/webstore/category/extensions?hl=zh-CN",
+                        "title": "Chrome 扩展应用商店",
+                        "desc": "",
+                        "logo": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://chrome.google.com/webstore/category/extensions?hl=zh-CN&size=96"
+                    }
+                ]
             }
+            this.getLogo();
             this.applyCard();
+        }
+
+        getLogo() {
+            for (let key in this.cardContent) {
+                let cardList = this.cardContent[key];
+                for (let card of cardList) {
+                    if (!card.logo) {
+                        card.logo = `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURI(card.url)}&size=96`;
+                    }
+                }
+            }
         }
 
         applyCard() {
@@ -662,12 +1617,12 @@
             navTabs.innerHTML = '';
             let tabHtml = "";
             let activeTab = null;
-            for (let tab of this.tabs) {
-                let active = tab.id === this.historyTab.id ? " active" : tabHtml.length === 0 ? " active" : "";
+            for (let tab in this.cardContent) {
+                let active = tab == this.historyTab ? " active" : tabHtml.length === 0 ? " active" : "";
                 if (active) {
                     activeTab = tab;
                 }
-                tabHtml += `<button class="nav-tab${active}" data-target="${tab.id}">${tab.name}</button>`;
+                tabHtml += `<button class="nav-tab${active}" data-target="${tab}">${tab}</button>`;
             }
             navTabs.innerHTML = tabHtml;
 
@@ -675,7 +1630,7 @@
             navContent.innerHTML = '';
             let contentHtml = "";
             for (let key in this.cardContent) {
-                let cActive = key === activeTab.id ? " active" : "";
+                let cActive = key === activeTab ? " active" : "";
                 let cardHtml = "";
                 for (let card of this.cardContent[key]) {
                     cardHtml += `<div class="card" onclick="window.open('${card.url}')">
