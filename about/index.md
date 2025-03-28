@@ -342,6 +342,10 @@
                 <img src="/favicon/favicon-96x96.png" alt="我的导航" class="tech-icon">
                 <p class="tech-name">我的导航</p>
             </a>
+            <a href="https://console.bce.baidu.com/miaoda/design" target="_blank" class="tech-card" data-tooltip="无代码编程，只需自然语言对话即可开发应用，之后可以对细节进行调整">
+                <img src="https://bce.bdstatic.com/p3m/common-service/uploads/miaodalogo1_09720ad.png" alt="秒哒" class="tech-icon">
+                <p class="tech-name">秒哒</p>
+            </a>
         </div>
     </section>
 </div>
